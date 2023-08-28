@@ -5,10 +5,10 @@ const listElements = document.querySelectorAll(".product-click");
 const containerBuyCart = document.querySelector(".products-to-buy");
 const finalPrice = document.querySelector(".final-price");
 const allContainerProducts = document.querySelector(".show");
+const allContainerProducts2 = document.querySelector(".show2");
 
 listElements.forEach((listElement) => {
   listElement.addEventListener("click", () => {
-    listElement.classList.toggle("hello");
 
     let height = 0;
     let menu = listElement.nextElementSibling;

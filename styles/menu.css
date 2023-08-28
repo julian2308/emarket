@@ -8,8 +8,7 @@
 body {
   background-color: var(--my-white);
   padding: 0;
-  margin-left: 1vw;
-  margin-top: 1vh;
+  margin: 1vw;
 }
 
 main {
@@ -166,17 +165,13 @@ aside{
   }
 
   .show{
-    width: 90%;
+    width: 100vw;
   }
-
-  .product{
-    width: 96vw;
-  }
+  
 
   .product-inside{
     width: 30%;
   }
-
 
 
 }
