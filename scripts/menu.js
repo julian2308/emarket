@@ -52,16 +52,18 @@ const addToSummary = () => {
     const productCard = document.createElement("article");
     productCard.innerHTML = `
     <article class="cart-product">
-        <img src=${image} class="product-img"/>
-            <div class="info-container">
-                <div class="about">
-                    <h4 class="title">${title}</h4>
-                    <p class="price">${price}</p>
-                    <h5>Amount: ${amount}</h5>
-                </div>
+    <div class product-cart-data>
+        <img src=${image} class="product-img-car"/>
+          <div class="info-container">
+            <div class="about">
+              <h4 class="title">${title}</h4>
+              <p class="price">${price}</p>
+              <h5>Amount: ${amount}</h5>
             </div>
+          </div>
+          </div>
             <span class="delete-product" data-id="${id}">X</span>
-            </article>
+        </article>
         `;
 
     containerBuyCart.appendChild(productCard);

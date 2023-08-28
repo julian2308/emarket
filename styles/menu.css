@@ -8,7 +8,8 @@
 body {
   background-color: var(--my-white);
   padding: 0;
-  margin: 0;
+  margin-left: 1vw;
+  margin-top: 1vh;
 }
 
 main {
@@ -84,9 +85,14 @@ main {
   cursor: pointer;
 }
 
-.product-img {
+.product-img-car {
   width: 150px;
   height: 100px;
+}
+
+.product-img{
+  width: 70%;
+  height: 35%;
 }
 
 .info-container{
@@ -126,6 +132,16 @@ main {
 
 .cart-product{
   width: 80%;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.delete-product{
+  border: 1px var(--border-color) solid;
+  background-color: var(--border-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  align-self: flex-end;
 }
 
 .about * {
@@ -137,3 +153,30 @@ aside{
   border-left: var(--border-color) 2px solid;
 }
 
+
+@media screen and (max-width: 1023px) {
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .products-to-buy{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .show{
+    width: 90%;
+  }
+
+  .product{
+    width: 96vw;
+  }
+
+  .product-inside{
+    width: 30%;
+  }
+
+
+
+}
