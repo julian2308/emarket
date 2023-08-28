@@ -11,8 +11,13 @@ body {
   margin: 0;
 }
 
-main{
-    display: flex;
+main {
+  display: flex;
+}
+
+.menu {
+  width: 80vw;
+
 }
 
 .entry-food {
@@ -27,12 +32,14 @@ main{
   padding: 10px;
   border: 2px var(--border-color) solid;
   border-radius: 13px;
-  width: 70vw;
+  width: 76vw;
 }
 
 .show {
-    height: 0;
-  }
+  height: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .product-click {
   cursor: pointer;
@@ -45,30 +52,36 @@ main{
   padding: 10px;
   border: 2px var(--border-color) solid;
   border-radius: 13px;
-  width: 60vw;
+  width: 30%;
+  margin-left: 0.5vw;
+  align-items: center;
+}
+
+
+
+.about {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
   
 }
 
-.product-inside:hover {
-  background-color: blue;
+.product-description {
+  margin: 0;
 }
 
-.about{
-    display: flex;
-    align-items: center;
+.about > p,
+.about > h4 {
+  display: inline;
+  margin-left: 5px;
 }
 
-.product-description{
-    margin: 0;
+.add-to {
+  align-self: self-end;
 }
 
-.about > p, .about > h4{
-    display:inline;
-    margin-left: 5px;
-}
-
-.add-to{
-    align-self: self-end;
+.add-to-cart {
+  cursor: pointer;
 }
 
 .product-img {
@@ -76,32 +89,51 @@ main{
   height: 100px;
 }
 
-.cart-container{
-    background-color: red;
+.info-container{
+  padding-left: 3px;
 }
 
-
-
-.product-on-cart{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 8px;
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.product-img-cart{
-    width: 100px;
-    height: 75px;
+.product-on-cart {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
 }
 
-.about{
-    display: flex;
-    flex-direction: column;
+.product-img-cart {
+  width: 100px;
+  height: 75px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+}
+
+.products-to-buy{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-product{
+  width: 80%;
 }
 
 .about * {
-    margin: 0;
+  margin: 0;
 }
 
+aside{
+  width: 20vw;
+  border-left: var(--border-color) 2px solid;
+}
 
