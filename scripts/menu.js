@@ -5,10 +5,14 @@ const listElements = document.querySelectorAll(".product-click");
 const containerBuyCart = document.querySelector(".products-to-buy");
 const finalPrice = document.querySelector(".final-price");
 const allContainerProducts = document.querySelector(".show");
+const allContainerProducts2 = document.querySelector(".show2");
+const allContainerProducts3 = document.querySelector(".show3");
+const allContainerProducts4 = document.querySelector(".show4");
+const allContainerProducts5 = document.querySelector(".show5");
+const allContainerProducts6 = document.querySelector(".show6");
 
 listElements.forEach((listElement) => {
   listElement.addEventListener("click", () => {
-    listElement.classList.toggle("hello");
 
     let height = 0;
     let menu = listElement.nextElementSibling;
@@ -52,16 +56,18 @@ const addToSummary = () => {
     const productCard = document.createElement("article");
     productCard.innerHTML = `
     <article class="cart-product">
-        <img src=${image} class="product-img"/>
-            <div class="info-container">
-                <div class="about">
-                    <h4 class="title">${title}</h4>
-                    <p class="price">${price}</p>
-                    <h5>Amount: ${amount}</h5>
-                </div>
+    <div class product-cart-data>
+        <img src=${image} class="product-img-car"/>
+          <div class="info-container">
+            <div class="about">
+              <h4 class="title">${title}</h4>
+              <p class="price">${price}</p>
+              <h5>Amount: ${amount}</h5>
             </div>
+          </div>
+          </div>
             <span class="delete-product" data-id="${id}">X</span>
-            </article>
+        </article>
         `;
 
     containerBuyCart.appendChild(productCard);
@@ -110,6 +116,11 @@ const addProduct = (e) => {
 
 const loadEventListeners = () => {
   allContainerProducts.addEventListener("click", addProduct);
+  allContainerProducts2.addEventListener("click", addProduct);
+  allContainerProducts3.addEventListener("click", addProduct);
+  allContainerProducts4.addEventListener("click", addProduct);
+  allContainerProducts5.addEventListener("click", addProduct);
+  allContainerProducts6.addEventListener("click", addProduct);
   containerBuyCart.addEventListener("click", deleteProduct);
 };
 loadEventListeners();
