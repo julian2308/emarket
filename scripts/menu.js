@@ -1,5 +1,5 @@
 let productsOnTheCart = [];
-let totalPrice = 10;
+let totalPrice = 0;
 
 const listElements = document.querySelectorAll(".product-click");
 const containerBuyCart = document.querySelector(".products-to-buy");
@@ -24,6 +24,16 @@ listElements.forEach((listElement) => {
 const deleteProduct = (e) => {
   if (e.target.classList.contains("delete-product")) {
     const deleteId = e.target.getAttribute("data-id");
+
+    productsOnTheCart.forEach((value) => {
+      if (value.id == deleteId) {
+        let minus = parseFloat(value.price) * parseFloat(value.amount);
+        totalPrice = totalPrice - minus;
+        totalPrice = totalPrice.toFixed(2);
+      }
+    });
+
+    finalPrice.innerHTML = totalPrice
     productsOnTheCart = productsOnTheCart.filter(
       (product) => product.id !== deleteId
     );
@@ -68,8 +78,8 @@ const readContent = (product) => {
     amount: 1,
   };
 
-  console.log(totalPrice, "Xd");
-  totalPrice = totalPrice;
+  totalPrice = parseFloat(totalPrice) + parseFloat(infoProduct.price);
+  totalPrice = totalPrice.toFixed(2);
 
   const exist = productsOnTheCart.some(
     (product) => product.id === infoProduct.id

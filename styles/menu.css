@@ -11,8 +11,13 @@ body {
   margin: 0;
 }
 
-main{
-    display: flex;
+main {
+  display: flex;
+}
+
+.menu {
+  width: 80vw;
+  background-color: red;
 }
 
 .entry-food {
@@ -27,12 +32,14 @@ main{
   padding: 10px;
   border: 2px var(--border-color) solid;
   border-radius: 13px;
-  width: 70vw;
+  width: 76vw;
 }
 
 .show {
-    height: 0;
-  }
+  height: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .product-click {
   cursor: pointer;
@@ -45,30 +52,41 @@ main{
   padding: 10px;
   border: 2px var(--border-color) solid;
   border-radius: 13px;
-  width: 60vw;
-  
+  width: 30%;
+  margin-left: 0.5vw;
+  align-items: center;
 }
+
+
 
 .product-inside:hover {
   background-color: blue;
+
 }
 
-.about{
-    display: flex;
-    align-items: center;
+.about {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  
 }
 
-.product-description{
-    margin: 0;
+.product-description {
+  margin: 0;
 }
 
-.about > p, .about > h4{
-    display:inline;
-    margin-left: 5px;
+.about > p,
+.about > h4 {
+  display: inline;
+  margin-left: 5px;
 }
 
-.add-to{
-    align-self: self-end;
+.add-to {
+  align-self: self-end;
+}
+
+.add-to-cart {
+ margin-left: 20%;
 }
 
 .product-img {
@@ -76,32 +94,37 @@ main{
   height: 100px;
 }
 
-.cart-container{
-    background-color: red;
+.info-container{
+  padding-left: 3px;
 }
 
-
-
-.product-on-cart{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 8px;
+.cart-container {
+  background-color: red;
 }
 
-.product-img-cart{
-    width: 100px;
-    height: 75px;
+.product-on-cart {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
 }
 
-.about{
-    display: flex;
-    flex-direction: column;
+.product-img-cart {
+  width: 100px;
+  height: 75px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
 }
 
 .about * {
-    margin: 0;
+  margin: 0;
 }
 
+aside{
+  width: 20vw;
+}
 
