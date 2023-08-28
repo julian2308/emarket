@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h4{
+    margin: 0;
+}
+
+#home{
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.option-container{
+    display: flex;
+    background-color: white;
+    margin-bottom: 20px;
+    width: 90vw;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+img{
+    width: 100px;
+    margin-right: 10px;
+}

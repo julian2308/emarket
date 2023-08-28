@@ -1,0 +1,35 @@
+:root{
+    --bg-color: #f7f4f3;
+    --main-color: #e9b796;
+    --border-color: #883026;
+    --my-white: white;
+}
+
+body{
+    background-color: var(--my-white);
+}
+
+
+.product{
+    margin-top: 15px;
+    display: flex;
+    background-color: var(--bg-color);
+    padding: 10px;
+    border: 2px var(--border-color) solid;
+    border-radius: 13px;
+    width: 90vw;
+    overflow: hidden;
+}
+
+
+img{
+    width: 150px;
+    height: 100px;
+}
+
+.show{
+    
+    border: 10px solid black;
+    background-color: red;
+
+}
