@@ -6,6 +6,10 @@ const containerBuyCart = document.querySelector(".products-to-buy");
 const finalPrice = document.querySelector(".final-price");
 const allContainerProducts = document.querySelector(".show");
 const allContainerProducts2 = document.querySelector(".show2");
+const allContainerProducts3 = document.querySelector(".show3");
+const allContainerProducts4 = document.querySelector(".show4");
+const allContainerProducts5 = document.querySelector(".show5");
+const allContainerProducts6 = document.querySelector(".show6");
 
 listElements.forEach((listElement) => {
   listElement.addEventListener("click", () => {
@@ -112,6 +116,11 @@ const addProduct = (e) => {
 
 const loadEventListeners = () => {
   allContainerProducts.addEventListener("click", addProduct);
+  allContainerProducts2.addEventListener("click", addProduct);
+  allContainerProducts3.addEventListener("click", addProduct);
+  allContainerProducts4.addEventListener("click", addProduct);
+  allContainerProducts5.addEventListener("click", addProduct);
+  allContainerProducts6.addEventListener("click", addProduct);
   containerBuyCart.addEventListener("click", deleteProduct);
 };
 loadEventListeners();
