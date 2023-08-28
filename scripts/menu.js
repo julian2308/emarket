@@ -33,7 +33,7 @@ const deleteProduct = (e) => {
       }
     });
 
-    finalPrice.innerHTML = totalPrice
+    finalPrice.innerHTML = totalPrice;
     productsOnTheCart = productsOnTheCart.filter(
       (product) => product.id !== deleteId
     );

@@ -86,7 +86,7 @@ main {
 }
 
 .add-to-cart {
- margin-left: 20%;
+  cursor: pointer;
 }
 
 .product-img {
