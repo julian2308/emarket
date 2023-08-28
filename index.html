@@ -8,8 +8,25 @@
   </head>
   <body>
     <header>
-      <h1>Bienvenido a Ruta 66, la comida más rápida del Oeste</h1>
+      <h1>RUTA 66</h1>
     </header>
+    <aside>
+      <h2>
+        "¡Bienvenidos a RUTA 66! Nuestro restaurante es el lugar perfecto para
+        los amantes de la comida que disfrutan de una variedad sin igual. En
+        nuestro menú, encontrarás un mundo de sabores que abarca desde
+        deliciosas especialidades locales hasta platos internacionales que te
+        harán viajar sin salir de tu silla. Nuestros talentosos chefs están
+        comprometidos con la frescura y la calidad, utilizando ingredientes de
+        primera para crear una experiencia gastronómica excepcional. Ya sea que
+        estés buscando un suculento filete a la parrilla, auténtica cocina
+        étnica o una selección de postres tentadores,
+        tenemos algo para satisfacer todos los gustos. Además, nuestro cálido y
+        acogedor ambiente te hará sentir como en casa. Así que, ven y disfruta
+        de una experiencia culinaria única en RUTA 66.
+        ¡Esperamos tener el placer de servirte pronto!"
+      </h2>
+    </aside>
     <main>
       <section class="menu">
         <section class="entry-food">
@@ -73,7 +90,7 @@
               <div class="add-to-cart" data-id="4">Añadir al carrito</div>
             </article>
             <article class="product-inside">
-              <img src="./images/" class="product-img" />
+              <img src="./images/alitas.jpeg" class="product-img" />
               <div class="info-container">
                 <div class="about">
                   <h4 class="title">Alitas de Pollo</h4>
@@ -88,7 +105,7 @@
           </div>
         </section>
 
-        <section class="entry-food">
+        <section class="entry-food main-food">
           <article class="product product-click">
             <div class="product-btn">
               <h4>Platos principales</h4>
@@ -96,7 +113,7 @@
           </article>
           <div class="show2 show">
             <article class="product-inside">
-              <img src="./images/pizza.png" class="product-img" />
+              <img src="./images/carne.jpeg" class="product-img" />
               <div class="info-container">
                 <div class="about">
                   <h4 class="title">Carne Asada</h4>
@@ -109,7 +126,7 @@
               <div class="add-to-cart" data-id="9">Añadir al carrito</div>
             </article>
             <article class="product-inside">
-              <img src="./images/pizza.png" class="product-img" />
+              <img src="./images/pasta.jpeg" class="product-img" />
               <div class="info-container">
                 <div class="about">
                   <h4 class="title">Pasta a lo McQueen</h4>
@@ -131,7 +148,7 @@
           </article>
           <div class="show3 show">
             <article class="product-inside">
-              <img src="./images/pizza.png" class="product-img" />
+              <img src="./images/coca.jpeg" class="product-img" />
               <div class="info-container">
                 <div class="about">
                   <h4 class="title">Coca Cola</h4>
@@ -144,7 +161,7 @@
               <div class="add-to-cart" data-id="11">Añadir al carrito</div>
             </article>
             <article class="product-inside">
-              <img src="./images/pizza.png" class="product-img" />
+              <img src="./images/sprite.jpeg" class="product-img" />
               <div class="info-container">
                 <div class="about">
                   <h4 class="title">Sprite</h4>
@@ -202,14 +219,15 @@
           </article>
           <div class="show5 show">
             <article class="product-inside">
-              <img src="./images/pizza.png" class="product-img" />
+              <img src="./images/bandeja.jpeg" class="product-img" />
               <div class="info-container">
                 <div class="about">
                   <h4 class="title">Bandeja RI</h4>
                   <p class="price">50</p>
                 </div>
                 <p class="product-description">
-                  Deliciosa bandeja paisa con chicharrón y sabor insuperable, con temática del Rayo
+                  Deliciosa bandeja paisa con chicharrón y sabor insuperable,
+                  con temática del Rayo
                 </p>
               </div>
               <div class="add-to-cart" data-id="15">Añadir al carrito</div>
@@ -222,7 +240,7 @@
               <h4>Recomendación del chéf</h4>
             </div>
           </article>
-          <div class="show6 show" >
+          <div class="show6 show">
             <article class="product-inside">
               <img src="./images/hamburguesa.jpeg" class="product-img" />
               <div class="info-container">
@@ -231,7 +249,8 @@
                   <p class="price">50</p>
                 </div>
                 <p class="product-description">
-                  Deliciosa hamburguesa traida directamente desde Fondo de Bikini
+                  Deliciosa hamburguesa traida directamente desde Fondo de
+                  Bikini
                 </p>
               </div>
               <div class="add-to-cart" data-id="16">Añadir al carrito</div>
@@ -244,6 +263,7 @@
         <section class="cart-container">
           <div class="products-to-buy"></div>
           <h2>Total $<strong class="final-price"></strong></h2>
+          <button id="pay">PAGAR</button>
         </section>
       </aside>
     </main>

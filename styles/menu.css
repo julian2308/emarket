@@ -9,6 +9,14 @@ body {
   background-color: var(--my-white);
   padding: 0;
   margin: 1vw;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+aside > h2 {
+  width: 90vw;
+  padding: 30px;
+  border: dotted var(--border-color) 2px;
 }
 
 main {
@@ -17,7 +25,6 @@ main {
 
 .menu {
   width: 80vw;
-
 }
 
 .entry-food {
@@ -57,13 +64,10 @@ main {
   align-items: center;
 }
 
-
-
 .about {
   display: flex;
   align-items: start;
   flex-direction: row;
-  
 }
 
 .product-description {
@@ -82,6 +86,7 @@ main {
 
 .add-to-cart {
   cursor: pointer;
+  font-weight: bold;
 }
 
 .product-img-car {
@@ -89,12 +94,12 @@ main {
   height: 100px;
 }
 
-.product-img{
+.product-img {
   width: 70%;
   height: 75%;
 }
 
-.info-container{
+.info-container {
   padding-left: 3px;
 }
 
@@ -112,6 +117,10 @@ main {
   padding: 8px;
 }
 
+.product-inside:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
 .product-img-cart {
   width: 100px;
   height: 75px;
@@ -122,56 +131,81 @@ main {
   flex-direction: column;
 }
 
-.products-to-buy{
+.products-to-buy {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.cart-product{
+.cart-product {
   width: 80%;
   margin-top: 1rem;
   display: flex;
 }
 
-.delete-product{
+.delete-product {
   border: 1px var(--border-color) solid;
   background-color: var(--border-color);
   color: var(--bg-color);
   cursor: pointer;
   align-self: flex-end;
+  padding: 0px 2px;
 }
 
 .about * {
   margin: 0;
 }
 
-aside{
+aside {
   width: 20vw;
   border-left: var(--border-color) 2px solid;
 }
 
-
 @media screen and (max-width: 1023px) {
-  main{
+  main {
     display: flex;
     flex-direction: column;
   }
 
-  .products-to-buy{
+  .products-to-buy {
     display: flex;
     flex-direction: row;
   }
 
-  .show{
+  .show {
     width: 100vw;
   }
-  
 
-  .product-inside{
+  .product-inside {
     width: 30%;
   }
+}
 
+@media screen and (max-width: 777px) {
+  .product-inside {
+    width: 40%;
+  }
 
+  .entry-food {
+    width: 100vw;
+  }
+
+  .product {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .show {
+    height: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+  }
+
+  .product-inside {
+    width: 90%;
+  }
 }

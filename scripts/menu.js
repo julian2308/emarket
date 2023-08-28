@@ -10,10 +10,10 @@ const allContainerProducts3 = document.querySelector(".show3");
 const allContainerProducts4 = document.querySelector(".show4");
 const allContainerProducts5 = document.querySelector(".show5");
 const allContainerProducts6 = document.querySelector(".show6");
+const payButton = document.querySelector("#pay");
 
 listElements.forEach((listElement) => {
   listElement.addEventListener("click", () => {
-
     let height = 0;
     let menu = listElement.nextElementSibling;
     console.log(menu);
@@ -124,3 +124,17 @@ const loadEventListeners = () => {
   containerBuyCart.addEventListener("click", deleteProduct);
 };
 loadEventListeners();
+
+payButton.addEventListener("click", () => {
+  console.log(productsOnTheCart);
+
+  let url = "http://127.0.0.1:5500/";
+  productsOnTheCart.forEach((product) => {
+    let keys = `?name=${product.title.split(" ")[0]}?price=${
+      product.price
+    }?amount=${product.amount}`;
+    url += keys;
+  });
+
+  window.location.href = url;
+});
