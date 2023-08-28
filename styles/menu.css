@@ -7,10 +7,17 @@
 
 body {
   background-color: var(--my-white);
+  padding: 0;
+  margin: 0;
+}
+
+main{
+    display: flex;
 }
 
 .entry-food {
   overflow: hidden;
+  width: 80vw;
 }
 
 .product {
@@ -20,7 +27,7 @@ body {
   padding: 10px;
   border: 2px var(--border-color) solid;
   border-radius: 13px;
-  width: 90vw;
+  width: 70vw;
 }
 
 .show {
@@ -38,16 +45,63 @@ body {
   padding: 10px;
   border: 2px var(--border-color) solid;
   border-radius: 13px;
-  width: 90vw;
+  width: 60vw;
+  
 }
 
 .product-inside:hover {
   background-color: blue;
 }
 
-img {
+.about{
+    display: flex;
+    align-items: center;
+}
+
+.product-description{
+    margin: 0;
+}
+
+.about > p, .about > h4{
+    display:inline;
+    margin-left: 5px;
+}
+
+.add-to{
+    align-self: self-end;
+}
+
+.product-img {
   width: 150px;
   height: 100px;
+}
+
+.cart-container{
+    background-color: red;
+}
+
+
+
+.product-on-cart{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+}
+
+.product-img-cart{
+    width: 100px;
+    height: 75px;
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+}
+
+.about * {
+    margin: 0;
 }
 
 
