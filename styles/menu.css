@@ -17,7 +17,7 @@ main {
 
 .menu {
   width: 80vw;
-  background-color: red;
+
 }
 
 .entry-food {
@@ -59,11 +59,6 @@ main {
 
 
 
-.product-inside:hover {
-  background-color: blue;
-
-}
-
 .about {
   display: flex;
   align-items: start;
@@ -99,7 +94,9 @@ main {
 }
 
 .cart-container {
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-on-cart {
@@ -120,11 +117,23 @@ main {
   flex-direction: column;
 }
 
+.products-to-buy{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-product{
+  width: 80%;
+}
+
 .about * {
   margin: 0;
 }
 
 aside{
   width: 20vw;
+  border-left: var(--border-color) 2px solid;
 }
 

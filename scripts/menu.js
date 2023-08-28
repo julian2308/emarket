@@ -50,8 +50,8 @@ const addToSummary = () => {
   productsOnTheCart.forEach((product) => {
     const { image, title, price, amount, id } = product;
     const productCard = document.createElement("article");
-    productCard.classList.add("product-inside");
     productCard.innerHTML = `
+    <article class="cart-product">
         <img src=${image} class="product-img"/>
             <div class="info-container">
                 <div class="about">
@@ -61,6 +61,7 @@ const addToSummary = () => {
                 </div>
             </div>
             <span class="delete-product" data-id="${id}">X</span>
+            </article>
         `;
 
     containerBuyCart.appendChild(productCard);
