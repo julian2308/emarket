@@ -16,13 +16,17 @@ body {
 aside > h2 {
   width: 90vw;
   padding: 30px;
-  border: dotted var(--border-color) 2px;
+  border: solid var(--border-color);
 }
 
 main {
   display: flex;
 }
 
+h1 {
+
+  text-align: center;
+}
 .menu {
   width: 80vw;
 }

@@ -1,6 +1,7 @@
 let productsOnTheCart = [];
 let totalPrice = 0;
 
+
 const listElements = document.querySelectorAll(".product-click");
 const containerBuyCart = document.querySelector(".products-to-buy");
 const finalPrice = document.querySelector(".final-price");
@@ -138,3 +139,30 @@ payButton.addEventListener("click", () => {
 
   window.location.href = url;
 });
+
+const xd = async (id = "no-id") => {
+  let response;
+  response = await fetch(`http://localhost:8080/api/hello`);
+  const json = await response.json();
+
+  console.log(json);
+}
+
+const public = async () => {
+
+  const data = {
+    quantity: [5,1,2],
+    ids: [1,2,3]
+  }
+  let response;
+  response = await fetch(`http://localhost:8080/api/product`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {"Content-type": "application/json"}
+  });
+  const json = await response.json();
+  console.log(json);
+}
+
+xd();
+//public();
