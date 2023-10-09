@@ -1,5 +1,6 @@
 let productsOnTheCart = [];
 let totalPrice = 0;
+let ready = false;
 
 
 const listElements = document.querySelectorAll(".product-click");
@@ -13,6 +14,7 @@ const allContainerProducts4 = document.querySelector(".show4");
 const allContainerProducts5 = document.querySelector(".show5");
 const allContainerProducts6 = document.querySelector(".show6");
 const payButton = document.querySelector("#pay");
+
 
 listElements.forEach((listElement) => {
   listElement.addEventListener("click", () => {
@@ -127,24 +129,57 @@ const loadEventListeners = () => {
 };
 loadEventListeners();
 
+
+const public = async (data) => {
+  let response;
+  response = await fetch(`http://localhost:8080/api/product`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {"Content-type": "application/json"}
+  });
+  const json = await response.json();
+
+}
+
+const formularioDiv = document.getElementById("formulario");
+const formCustomer = document.getElementById("miFormulario");
+
+formCustomer.addEventListener("submit", function(event) {
+  event.preventDefault(); // Evita que el formulario se envíe
+  let nombre = document.getElementById("nombre").value;
+  let email = document.getElementById("email").value;
+  let telefono = document.getElementById("telefono").value;
+  let direccion = document.getElementById("direccion").value;
+
+  alert("Sus datos fueron capturados correctamente.")
+  let idsToSend = [];
+    let quantitiesToSend = [];
+    productsOnTheCart.forEach((product) => {
+      idsToSend.push(product.id)
+      quantitiesToSend.push(product.amount)
+    });
+    public({ ids: idsToSend, quantity:quantitiesToSend, myName: nombre, myEmail: email, myPhone: telefono, myAddress: direccion});
+  window.location.href = '/';
+});
+
+
 payButton.addEventListener("click", () => {
   console.log(productsOnTheCart);
 
-  let url = "http://127.0.0.1:5500/";
-  productsOnTheCart.forEach((product) => {
-    let keys = `?name=${product.title.split(" ")[0]}?price=${
-      product.price
-    }?amount=${product.amount}`;
-    url += keys;
-  });
+  if(productsOnTheCart.length < 1){
+    alert("zd")
+  } else {
+    formularioDiv.style.display = "block";
+    ready ? console.log("estamos") : console.log("no estamos");
 
-  window.location.href = url;
+    
+  }
 });
 
 const xd = async (id = "no-id") => {
   let response;
   response = await fetch(`http://localhost:8080/api/hello`);
-  const {entry, desert} = await response.json();
+  const {entry, desert, main, drink} = await response.json();
 
   const renderAll = (array, container) => {
     array.forEach(entryO => {
@@ -169,29 +204,11 @@ const xd = async (id = "no-id") => {
 
   renderAll(entry, allContainerProducts1)
   renderAll(desert, allContainerProducts4)
+  renderAll(main, allContainerProducts2)
+  renderAll(drink, allContainerProducts3)
 
-  
-
-
-
-  console.log(entry);
 }
 
-const public = async () => {
-
-  const data = {
-    quantity: [5,1,2],
-    ids: [1,2,3]
-  }
-  let response;
-  response = await fetch(`http://localhost:8080/api/product`, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {"Content-type": "application/json"}
-  });
-  const json = await response.json();
-  console.log(json);
-}
 
 xd();
-//public();
+
