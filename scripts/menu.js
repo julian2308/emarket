@@ -146,25 +146,34 @@ const xd = async (id = "no-id") => {
   response = await fetch(`http://localhost:8080/api/hello`);
   const {entry, desert} = await response.json();
 
-  entry.forEach(entryO => {
-    const html = `
-    <article class="product-inside">
-      <img src="${entryO.image}" class="product-img" />
-      <div class="info-container">
-        <div class="about">
-          <h4 class="title">${entryO.name}</h4>
-          <p class="price">${entryO.price}</p>
+  const renderAll = (array, container) => {
+    array.forEach(entryO => {
+      const html = `
+      <article class="product-inside">
+        <img src="${entryO.image}" class="product-img" />
+        <div class="info-container">
+          <div class="about">
+            <h4 class="title">${entryO.name}</h4>
+            <p class="price">${entryO.price}</p>
+          </div>
+          <p class="product-description">
+            ${entryO.description}
+          </p>
         </div>
-        <p class="product-description">
-          ${entryO.description}
-        </p>
-      </div>
-      <div class="add-to-cart" data-id="${entryO.id}">Añadir al carrito</div>
-    </article>
-  `;
-    
-    allContainerProducts1.innerHTML += html 
-  });
+        <div class="add-to-cart" data-id="${entryO.id}">Añadir al carrito</div>
+      </article>
+    `;
+    container.innerHTML += html 
+    });
+  }
+
+  renderAll(entry, allContainerProducts1)
+  renderAll(desert, allContainerProducts4)
+
+  
+
+
+
   console.log(entry);
 }
 
