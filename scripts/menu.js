@@ -6,6 +6,7 @@ const listElements = document.querySelectorAll(".product-click");
 const containerBuyCart = document.querySelector(".products-to-buy");
 const finalPrice = document.querySelector(".final-price");
 const allContainerProducts = document.querySelector(".show");
+const allContainerProducts1 = document.querySelector(".show1");
 const allContainerProducts2 = document.querySelector(".show2");
 const allContainerProducts3 = document.querySelector(".show3");
 const allContainerProducts4 = document.querySelector(".show4");
@@ -143,9 +144,28 @@ payButton.addEventListener("click", () => {
 const xd = async (id = "no-id") => {
   let response;
   response = await fetch(`http://localhost:8080/api/hello`);
-  const json = await response.json();
+  const {entry, desert} = await response.json();
 
-  console.log(json);
+  entry.forEach(entryO => {
+    const html = `
+    <article class="product-inside">
+      <img src="${entryO.image}" class="product-img" />
+      <div class="info-container">
+        <div class="about">
+          <h4 class="title">${entryO.name}</h4>
+          <p class="price">${entryO.price}</p>
+        </div>
+        <p class="product-description">
+          ${entryO.description}
+        </p>
+      </div>
+      <div class="add-to-cart" data-id="${entryO.id}">Añadir al carrito</div>
+    </article>
+  `;
+    
+    allContainerProducts1.innerHTML += html 
+  });
+  console.log(entry);
 }
 
 const public = async () => {
