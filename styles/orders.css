@@ -1,0 +1,45 @@
+body{
+    padding: 0;
+}
+
+.orders{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.order{
+    border: solid black 1px;
+    width: 30vw;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+
+table{
+    width: 100%;
+}
+
+th, td {
+    width: 15%;
+    text-align: center;
+ }
+
+.userInformation{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.orderInformation{
+    display: flex;
+    gap: 10px; 
+    justify-content:space-around;
+    justify-self: flex-end;
+    
+}
+
+.state{
+    display: flex;
+}
+

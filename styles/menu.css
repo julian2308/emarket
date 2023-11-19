@@ -188,6 +188,11 @@ aside {
   .product-inside {
     width: 30%;
   }
+
+  form{
+    flex-direction: column;
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 777px) {
@@ -201,6 +206,10 @@ aside {
 
   .product {
     width: 90%;
+  }
+
+  form{
+    flex-direction: column;
   }
 }
 

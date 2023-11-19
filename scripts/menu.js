@@ -132,13 +132,15 @@ loadEventListeners();
 
 const public = async (data) => {
   let response;
-  response = await fetch(`http://localhost:8080/api/product`, {
-    method: "POST",
+  response = await fetch(`http://localhost:8080/api/v1/users/all`, {
+    method: "GET",
     body: JSON.stringify(data),
-    headers: {"Content-type": "application/json"}
+    headers: {"Content-type": "application/json",
+    'Access-Control-Allow-Origin': '*',}
   });
   const json = await response.json();
 
+  console.log(json);
 }
 
 const formularioDiv = document.getElementById("formulario");
@@ -159,7 +161,7 @@ formCustomer.addEventListener("submit", function(event) {
       quantitiesToSend.push(product.amount)
     });
     public({ ids: idsToSend, quantity:quantitiesToSend, myName: nombre, myEmail: email, myPhone: telefono, myAddress: direccion});
-  window.location.href = '/';
+  
 });
 
 
@@ -167,16 +169,16 @@ payButton.addEventListener("click", () => {
   console.log(productsOnTheCart);
 
   if(productsOnTheCart.length < 1){
-    alert("zd")
+    alert("Añade productos a tu carritp")
   } else {
     formularioDiv.style.display = "block";
-    ready ? console.log("estamos") : console.log("no estamos");
+
 
     
   }
 });
 
-const xd = async (id = "no-id") => {
+const getProduts = async () => {
   let response;
   response = await fetch(`http://localhost:8080/api/hello`);
   const {entry, desert, main, drink} = await response.json();
@@ -210,5 +212,5 @@ const xd = async (id = "no-id") => {
 }
 
 
-xd();
+getProduts();
 
