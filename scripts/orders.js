@@ -2,12 +2,12 @@ const main = document.querySelector(".orders");
 const miBoton = document.querySelector("#logout")
 
 
-const logout = (event) => {
+function logOut (event){
     event.preventDefault()
-    sessionStorage.removeItem("token")
-    if (!valorEnStorage) {
-        miBoton.disabled = true;
-    }
+    //window.location.href = "https://julian2308.github.io/emarket/"
+    sessionStorage.removeItem("token");
+    alert("Cerró sesión")
+    window.location.href = "https://julian2308.github.io/emarket/orders"
 }
 
 async function login(e) {
