@@ -158,7 +158,6 @@ formCustomer.addEventListener("submit", function(event) {
       quantitiesToSend.push(product.amount)
     });
     public({ ids: idsToSend, quantity:quantitiesToSend, myName: nombre, myEmail: email, myPhone: telefono, myAddress: direccion});
-  
 });
 
 

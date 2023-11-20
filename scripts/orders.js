@@ -1,10 +1,41 @@
 const main = document.querySelector(".orders");
 
 
+    async function login(e){
+
+    e.preventDefault()
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization' : 'Basic ' + btoa(`${email}:${password}`),
+    },
+        
+        
+    };
+    let xd = await fetch(`http://localhost:8080/api/login`,requestOptions).catch((e) => {
+        console.log(e);
+    });
+     xd.json().then((response) => {
+        sessionStorage.setItem('token', response.token)
+        if(response.message != "Usuario autenticado"){
+            alert("Error en las credenciales")
+        } else {
+            getProduts("pending");
+            alert(response.message)
+        }
+
+        
+     }).catch((e) =>{
+        alert(e)
+     })
+}
+
 const searchByName = () => {
     main.innerHTML = ""
     let name = document.getElementById("name").value;
-    getProduts("pending")
+    getByName(name)
 }
 
 const changeSelect = () => {
@@ -15,9 +46,10 @@ const changeSelect = () => {
 }
 
 const changeState = (id) => {
+    const token = sessionStorage.getItem('token')
     const requestOptions = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}`},
     };
     fetch(`http://localhost:8080/api/pending?id=${id}`,requestOptions);
     setTimeout(() => {
@@ -28,9 +60,86 @@ const changeState = (id) => {
     }, "500");
 }
 
-const getProduts = async (endpoint,state) => {
+const getProduts = async (state) => {
+    const token = sessionStorage.getItem('token')
+    console.log(token, "token");
     let response;
-    response = await fetch(`${endpoint}=${state}`);
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization' : `Bearer ${token}`},
+    };
+    response = await fetch(`http://localhost:8080/api/list?current-state=${state}`, requestOptions);
+    finalRespone = await response.json()
+    console.log(finalRespone)
+
+    finalRespone.forEach(order =>{
+
+        let orders ="";
+        order.products.forEach(product => {
+
+        const orderIndiviual = `
+        <tr>
+            <td>${product.id}</td>
+            <td>${product.name}</td>
+            <td>${product.category}</td>
+            <td>${product.price}</td>
+            <td>${product.pivot.quantity}</td>
+        </tr>
+    `
+            orders += orderIndiviual
+            
+        });
+    
+    
+
+    const html = `
+    <section class="order">
+    <div class="userInformation">
+        <p>${order.customer_name}</p>
+        <p>${order.customer_email}</p>
+        <p>${order.customer_phone}</p>
+        <p>${order.customer_address}</p>
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${orders}
+        </tbody>
+    </table>
+    <div class="orderInformation">
+        <button onclick="changeState(${order.id})">${order.state}</button>
+        <p>${order.total}</p>
+    </div> 
+</section>
+    `;
+    main.innerHTML += html;
+
+    
+    })
+    
+
+}
+
+
+const getByName = async (name) => {
+    const token = sessionStorage.getItem('token')
+    let response;
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization' : `Bearer ${token}`},
+    };
+    response = await fetch(`http://localhost:8080/api/list-name?name=${name}`, requestOptions);
     finalRespone = await response.json()
     console.log(finalRespone)
 
