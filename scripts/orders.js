@@ -7,7 +7,7 @@ function logOut (event){
     //window.location.href = "https://julian2308.github.io/emarket/"
     sessionStorage.removeItem("token");
     alert("Cerró sesión")
-    window.location.href = "https://julian2308.github.io/emarket/orders"
+    window.location.href = "https://julian2308.github.io/emarket/"
 }
 
 async function login(e) {
