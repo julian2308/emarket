@@ -1,84 +1,103 @@
 const main = document.querySelector(".orders");
+const miBoton = document.querySelector("#logout")
 
 
-    async function login(e){
+const logout = (event) => {
+    event.preventDefault()
+    sessionStorage.removeItem("token")
+    if (!valorEnStorage) {
+        miBoton.disabled = true;
+    }
+}
 
-    e.preventDefault()
-        let email = document.getElementById("email").value;
-        let password = document.getElementById("password").value;
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json',
-        'Authorization' : 'Basic ' + btoa(`${email}:${password}`),
+async function login(e) {
+  e.preventDefault();
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Basic " + btoa(`${email}:${password}`),
     },
-        
-        
-    };
-    let xd = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/login`,requestOptions).catch((e) => {
-        console.log(e);
+  };
+  let xd = await fetch(
+    `https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/login`,
+    requestOptions
+  ).catch((e) => {
+    console.log(e);
+  });
+  xd.json()
+    .then((response) => {
+      sessionStorage.setItem("token", response.token);
+      if (response.message != "Usuario autenticado") {
+        alert("Error en las credenciales");
+      } else {
+        getProduts("pending");
+        alert(response.message);
+      }
+    })
+    .catch((e) => {
+      alert(e);
     });
-     xd.json().then((response) => {
-        sessionStorage.setItem('token', response.token)
-        if(response.message != "Usuario autenticado"){
-            alert("Error en las credenciales")
-        } else {
-            getProduts("pending");
-            alert(response.message)
-        }
-
-        
-     }).catch((e) =>{
-        alert(e)
-     })
 }
 
 const searchByName = () => {
-    main.innerHTML = ""
-    let name = document.getElementById("name").value;
-    getByName(name)
-}
+  main.innerHTML = "";
+  let name = document.getElementById("name").value;
+  getByName(name);
+};
 
 const changeSelect = () => {
-    let value = document.getElementById("state").value;
-    main.innerHTML = ""
-    console.log(value);
-    getProduts(value)
-}
+  let value = document.getElementById("state").value;
+  main.innerHTML = "";
+  console.log(value);
+  getProduts(value);
+};
 
 const changeState = (id) => {
-    const token = sessionStorage.getItem('token')
-    const requestOptions = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}`},
-    };
-    fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/pending?id=${id}`,requestOptions);
-    setTimeout(() => {
-        main.innerHTML = ""
-    }, "300");
-    setTimeout(() => {
-        getProduts();
-    }, "500");
-}
+  const token = sessionStorage.getItem("token");
+  const requestOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  fetch(
+    `https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/pending?id=${id}`,
+    requestOptions
+  );
+  setTimeout(() => {
+    main.innerHTML = "";
+  }, "300");
+  setTimeout(() => {
+    getProduts();
+  }, "500");
+};
 
 const getProduts = async (state) => {
-    const token = sessionStorage.getItem('token')
-    console.log(token, "token");
-    let response;
-    const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${token}`},
-    };
-    response = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/list?current-state=${state}`, requestOptions);
-    finalRespone = await response.json()
-    console.log(finalRespone)
+  const token = sessionStorage.getItem("token");
+  console.log(token, "token");
+  let response;
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  response = await fetch(
+    `https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/list?current-state=${state}`,
+    requestOptions
+  );
+  finalRespone = await response.json();
+  console.log(finalRespone);
 
-    finalRespone.forEach(order =>{
-
-        let orders ="";
-        order.products.forEach(product => {
-
-        const orderIndiviual = `
+  finalRespone.forEach((order) => {
+    let orders = "";
+    order.products.forEach((product) => {
+      const orderIndiviual = `
         <tr>
             <td>${product.id}</td>
             <td>${product.name}</td>
@@ -86,12 +105,9 @@ const getProduts = async (state) => {
             <td>${product.price}</td>
             <td>${product.pivot.quantity}</td>
         </tr>
-    `
-            orders += orderIndiviual
-            
-        });
-    
-    
+    `;
+      orders += orderIndiviual;
+    });
 
     const html = `
     <section class="order">
@@ -123,32 +139,30 @@ const getProduts = async (state) => {
 </section>
     `;
     main.innerHTML += html;
-
-    
-    })
-    
-
-}
-
+  });
+};
 
 const getByName = async (name) => {
-    const token = sessionStorage.getItem('token')
-    let response;
-    const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${token}`},
-    };
-    response = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/list-name?name=${name}`, requestOptions);
-    finalRespone = await response.json()
-    console.log(finalRespone)
+  const token = sessionStorage.getItem("token");
+  let response;
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  response = await fetch(
+    `https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/list-name?name=${name}`,
+    requestOptions
+  );
+  finalRespone = await response.json();
+  console.log(finalRespone);
 
-    finalRespone.forEach(order =>{
-
-        let orders ="";
-        order.products.forEach(product => {
-
-        const orderIndiviual = `
+  finalRespone.forEach((order) => {
+    let orders = "";
+    order.products.forEach((product) => {
+      const orderIndiviual = `
         <tr>
             <td>${product.id}</td>
             <td>${product.name}</td>
@@ -156,12 +170,9 @@ const getByName = async (name) => {
             <td>${product.price}</td>
             <td>${product.pivot.quantity}</td>
         </tr>
-    `
-            orders += orderIndiviual
-            
-        });
-    
-    
+    `;
+      orders += orderIndiviual;
+    });
 
     const html = `
     <section class="order">
@@ -193,12 +204,7 @@ const getByName = async (name) => {
 </section>
     `;
     main.innerHTML += html;
-
-    
-    })
-    
-
-}
+  });
+};
 
 getProduts("pending");
-
