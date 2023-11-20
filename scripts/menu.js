@@ -132,7 +132,7 @@ loadEventListeners();
 
 const public = async (data) => {
   let response;
-  response = await fetch(`http://localhost:8080/api/product`, {
+  response = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/product`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {"Content-type": "application/json"}
@@ -176,7 +176,7 @@ payButton.addEventListener("click", () => {
 
 const getProduts = async () => {
   let response;
-  response = await fetch(`http://localhost:8080/api/hello`);
+  response = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/hello`);
   const {entry, desert, main, drink} = await response.json();
 
   const renderAll = (array, container) => {

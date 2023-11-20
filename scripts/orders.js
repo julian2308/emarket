@@ -14,7 +14,7 @@ const main = document.querySelector(".orders");
         
         
     };
-    let xd = await fetch(`http://localhost:8080/api/login`,requestOptions).catch((e) => {
+    let xd = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/login`,requestOptions).catch((e) => {
         console.log(e);
     });
      xd.json().then((response) => {
@@ -51,7 +51,7 @@ const changeState = (id) => {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}`},
     };
-    fetch(`http://localhost:8080/api/pending?id=${id}`,requestOptions);
+    fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/pending?id=${id}`,requestOptions);
     setTimeout(() => {
         main.innerHTML = ""
     }, "300");
@@ -69,7 +69,7 @@ const getProduts = async (state) => {
         headers: { 'Content-Type': 'application/json',
         'Authorization' : `Bearer ${token}`},
     };
-    response = await fetch(`http://localhost:8080/api/list?current-state=${state}`, requestOptions);
+    response = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/list?current-state=${state}`, requestOptions);
     finalRespone = await response.json()
     console.log(finalRespone)
 
@@ -139,7 +139,7 @@ const getByName = async (name) => {
         headers: { 'Content-Type': 'application/json',
         'Authorization' : `Bearer ${token}`},
     };
-    response = await fetch(`http://localhost:8080/api/list-name?name=${name}`, requestOptions);
+    response = await fetch(`https://ruta66-jdag-pnt20232-unisabana.onrender.com/api/list-name?name=${name}`, requestOptions);
     finalRespone = await response.json()
     console.log(finalRespone)
 
