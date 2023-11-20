@@ -1,18 +1,36 @@
 const main = document.querySelector(".orders");
+
+
+const searchByName = () => {
+    main.innerHTML = ""
+    let name = document.getElementById("name").value;
+    getProduts("pending")
+}
+
+const changeSelect = () => {
+    let value = document.getElementById("state").value;
+    main.innerHTML = ""
+    console.log(value);
+    getProduts(value)
+}
+
 const changeState = (id) => {
-    console.log(id);
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
     };
     fetch(`http://localhost:8080/api/pending?id=${id}`,requestOptions);
-    main.innerHTML = ""
-    getProduts();
+    setTimeout(() => {
+        main.innerHTML = ""
+    }, "300");
+    setTimeout(() => {
+        getProduts();
+    }, "500");
 }
 
-const getProduts = async () => {
+const getProduts = async (endpoint,state) => {
     let response;
-    response = await fetch(`http://localhost:8080/api/list?current-state=resolved`);
+    response = await fetch(`${endpoint}=${state}`);
     finalRespone = await response.json()
     console.log(finalRespone)
 
@@ -73,5 +91,5 @@ const getProduts = async () => {
 
 }
 
-getProduts();
+getProduts("pending");
 

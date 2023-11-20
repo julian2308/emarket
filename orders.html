@@ -9,10 +9,26 @@
 <body>
     <header>
         <h1>Administración de órdenes Ruta 66</h1>
+        <form id="myForm">
+            <label for="state">Selecciona el estado del cuál deseas filtrar:</label>
+            <select id="state" name="state" onchange="changeSelect()">
+                <option value="pending">Pendiente</option>
+                <option value="resolved">Resuelta</option>
+            </select>
+            <button type="button" onclick="realizarPeticion()">Realizar Petición</button>
+        </form>
+        <div class="byName">
+            <form id="myForm">
+                <label for="name">Ingresa el nombre a buscar:</label>
+                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre">
+                <button type="button" onclick="searchByName()">Realizar Petición</button>
+            </form>
+        </div>
+    
     </header>
     <main id="main">
         <div class="orders">
-            
+
         </div>
     </main>    
 </body>

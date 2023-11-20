@@ -132,15 +132,12 @@ loadEventListeners();
 
 const public = async (data) => {
   let response;
-  response = await fetch(`http://localhost:8080/api/v1/users/all`, {
-    method: "GET",
+  response = await fetch(`http://localhost:8080/api/product`, {
+    method: "POST",
     body: JSON.stringify(data),
-    headers: {"Content-type": "application/json",
-    'Access-Control-Allow-Origin': '*',}
+    headers: {"Content-type": "application/json"}
   });
   const json = await response.json();
-
-  console.log(json);
 }
 
 const formularioDiv = document.getElementById("formulario");
