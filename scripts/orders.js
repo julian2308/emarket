@@ -42,7 +42,8 @@ async function login(e) {
     });
 }
 
-const searchByName = () => {
+const searchByName = (event) => {
+  event.preventDefault();
   main.innerHTML = "";
   let name = document.getElementById("name").value;
   getByName(name);
